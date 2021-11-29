@@ -2,6 +2,8 @@
   <div id="app">
     <Header @searchFilm="userFilm"/>
 
+    <Counter :filmArray="filmList"/>
+
     <Main :filmArray="filmList" v-if="filmList !== null"/>
 
     <Loader v-else/>
@@ -14,13 +16,15 @@ import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Main from '@/components/Main.vue'
 import Loader from '@/components/Loader.vue'
+import Counter from '@/components/Counter.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     Main,
-    Loader
+    Loader,
+    Counter,
 
   },
 

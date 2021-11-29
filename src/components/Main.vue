@@ -1,6 +1,6 @@
 <template>
   <main>
-
+      
       <Card 
         v-for="film in filmArray"
         :key="`${film.id}`"
