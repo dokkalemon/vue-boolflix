@@ -2,7 +2,8 @@
   <ul>
       <li>{{ title }}</li>
       <li>{{ originalTitle }}</li>
-      <li>{{ language }}</li>
+      <li v-if="language !== 'en' && language !== 'it'">{{ language }}</li>
+      <li v-else><img :src="`${img}`" alt=""></li>
       <li>{{ vote }}</li>
   </ul>
 </template>
@@ -17,12 +18,41 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number
+    },
+
+    created() {
+        this.selectFlag()
+    },
+
+    data() {
+        return {
+            img: '',
+        }
+    },
+
+    methods: {
+        selectFlag() {
+            if (this.language === 'it') {
+                this.img = require('../assets/it.png')
+            } else if (this.language === 'en') {
+                this.img = require('../assets/en.png')
+  
+            }
+        }
     }
 
 
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+
+ul {
+    li {
+        img {
+            height: 15px;
+        }
+    }
+}
 
 </style>

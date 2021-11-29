@@ -27,6 +27,7 @@ export default {
             filmList: null,
 
             searchedFilm: '',
+          
         }
     },
 
@@ -37,7 +38,8 @@ export default {
             axios.get('https://api.themoviedb.org/3/search/movie?', {
                 params: {
                     api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-                    query: 'a'
+                    query: 'a',
+                    language: 'it-IT'
                 }
             })
             .then(result => {
