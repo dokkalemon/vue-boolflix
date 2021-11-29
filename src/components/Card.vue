@@ -11,6 +11,22 @@
 export default {
     name: 'Card',
 
+    created() {
+        this.getFilm(r)
+    },
+
+    data() {
+        return {
+            filmList: [],
+        }
+    },
+
+    methods: {
+
+        getFilm() {
+            console.log('cioao');
+        }
+    }
 
 }
 </script>
