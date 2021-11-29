@@ -12,6 +12,13 @@
 export default {
     name: 'Card',
 
+    props: {
+        title: String,
+        originalTitle: String,
+        language: String,
+        vote: String
+    }
+
 
 }
 </script>
