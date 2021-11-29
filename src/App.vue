@@ -4,7 +4,7 @@
 
     <Counter :filmArray="filmList"/>
 
-    <Main :filmArray="filmList" v-if="filmList !== null"/>
+    <Main :filmArray="filmList" v-if="filmList.length > 0"/>
 
     <Loader v-else/>
 
@@ -34,7 +34,7 @@ export default {
 
     data() {
         return {
-            filmList: null,
+            filmList: [],
 
             searchedFilm: '',
 
