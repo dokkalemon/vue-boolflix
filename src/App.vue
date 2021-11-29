@@ -15,7 +15,11 @@ export default {
     Header,
     Main
 
-  }
+  },
+
+  
+
+
 }
 </script>
 

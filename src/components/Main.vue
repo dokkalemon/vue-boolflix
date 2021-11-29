@@ -1,7 +1,14 @@
 <template>
   <main>
 
-      <Card />
+      <Card 
+        v-for="film in filmList"
+        :key="`${film.id}`"
+        :title="film.title"
+        :originalTitle="film.original_title"
+        :language="film.original_language"
+        :vote="film.vote_average"
+      />
 
   </main>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <ul>
-      <li>Titolo:</li>
-      <li>Titolo Originale</li>
-      <li>Lingua</li>
-      <li>Voto</li>
+      <li>{{ title }}</li>
+      <li>{{ originalTitle }}</li>
+      <li>{{ language }}</li>
+      <li>{{ vote }}</li>
   </ul>
 </template>
 
