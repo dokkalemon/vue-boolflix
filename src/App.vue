@@ -6,8 +6,6 @@
 
     <Loader v-else/>
 
-
-
   </div>
 </template>
 

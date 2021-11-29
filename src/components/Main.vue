@@ -9,7 +9,7 @@
         :language="film.original_language"
         :vote="film.vote_average"
       />
-
+        
   </main>
 </template>
 

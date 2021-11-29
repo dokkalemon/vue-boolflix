@@ -1,7 +1,7 @@
 <template>
   <ul>
       <li>{{ title }}</li>
-      <li>{{ originalTitle }}</li>
+      <li v-show="title !== originalTitle">{{ originalTitle }}</li>
       <li v-if="language !== 'en' && language !== 'it'">{{ language }}</li>
       <li v-else><img :src="`${img}`" alt=""></li>
       <li>{{ vote }}</li>
