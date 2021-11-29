@@ -2,7 +2,7 @@
   <main>
 
       <Card 
-        v-for="film in filmList"
+        v-for="film in filmArray"
         :key="`${film.id}`"
         :title="film.title"
         :originalTitle="film.original_title"
@@ -21,6 +21,10 @@ export default {
     components: {
         Card
     },
+
+    props: {
+        filmArray: Array,
+    }
 
 
 
