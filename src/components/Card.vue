@@ -8,25 +8,10 @@
 </template>
 
 <script>
+
 export default {
     name: 'Card',
 
-    created() {
-        this.getFilm()
-    },
-
-    data() {
-        return {
-            filmList: [],
-        }
-    },
-
-    methods: {
-
-        getFilm() {
-            console.log('cioao');
-        }
-    }
 
 }
 </script>
