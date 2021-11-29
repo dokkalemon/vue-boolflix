@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <Header @searchFilm="userFilm"/>
-    <Main :filmArray="filmList"/>
+
+    <Main :filmArray="filmList" v-if="filmList !== null"/>
+
+    <Loader v-else/>
+
+
+
   </div>
 </template>
 
@@ -9,12 +15,14 @@
 import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Main from '@/components/Main.vue'
+import Loader from '@/components/Loader.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Main
+    Main,
+    Loader
 
   },
 
@@ -27,7 +35,7 @@ export default {
             filmList: null,
 
             searchedFilm: '',
-          
+
         }
     },
 
