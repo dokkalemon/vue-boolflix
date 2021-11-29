@@ -1,7 +1,7 @@
 <template>
     <form action="">
-        <input type="text" placeholder="Inserisci il titolo di un film">
-        <button type="submit">Search</button>
+        <input type="text" placeholder="Inserisci il titolo di un film" v-model="userSearch">
+        <button type="submit" @click.prevent="$emit('searchFilm', userSearch)">Search</button>
 
 
     </form>
@@ -13,7 +13,13 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+
+    data() {
+        return {
+            userSearch: '',
+        }
+    }
 }
 </script>
 

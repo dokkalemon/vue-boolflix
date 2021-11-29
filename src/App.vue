@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @searchFilm="userFilm"/>
     <Main :filmArray="filmList"/>
   </div>
 </template>
@@ -25,6 +25,8 @@ export default {
     data() {
         return {
             filmList: null,
+
+            searchedFilm: '',
         }
     },
 
@@ -35,13 +37,27 @@ export default {
             axios.get('https://api.themoviedb.org/3/search/movie?', {
                 params: {
                     api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-                    query: 'ritorno al futuro'
+                    query: 'a'
                 }
             })
             .then(result => {
                 this.filmList = result.data.results
             })
 
+            },
+
+            userFilm(dato) {
+              axios.get('https://api.themoviedb.org/3/search/movie?', {
+                params: {
+                    api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+                    query: `${dato.toLowerCase()}`
+                }
+            })
+            .then(result => {
+                this.filmList = result.data.results
+            })
+
+            
             }
     }
 
