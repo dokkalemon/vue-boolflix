@@ -31,7 +31,7 @@ export default {
   },
 
      created() {
-        this.getFilm()
+        this.userFilm()
     },
 
     data() {
@@ -46,22 +46,11 @@ export default {
 
     methods: {
 
-        getFilm() {
-            
-            axios.get('https://api.themoviedb.org/3/search/movie?', {
-                params: {
-                    api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-                    query: 'a',
-                    language: 'it-IT'
-                }
-            })
-            .then(result => {
-                this.filmList = result.data.results
-            })
-
-            },
-
         userFilm(dato) {
+            if (dato === undefined) {
+                dato = 'a'
+            }
+
             //Films
             axios.get('https://api.themoviedb.org/3/search/movie?', {
                 params: {
