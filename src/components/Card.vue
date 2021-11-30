@@ -2,8 +2,10 @@
   <ul>
       <li>{{ title }}</li>
       <li v-show="title !== originalTitle">{{ originalTitle }}</li>
-      <li v-if="language !== 'en' && language !== 'it'">{{ language }}</li>
-      <li v-else><img :src="`${img}`" alt=""></li>
+      <li>
+            <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
+            <span v-else> {{language}} </span>
+      </li>
       <li>{{ vote }}</li>
   </ul>
 </template>
@@ -20,25 +22,20 @@ export default {
         vote: Number
     },
 
-    created() {
-        this.selectFlag()
+    computed: {
+        isFlag() {
+            return this.availableFlag.includes(this.language)
+        }
     },
 
     data() {
         return {
-            img: '',
+            availableFlag: ['it', 'en'],
         }
     },
 
     methods: {
-        selectFlag() {
-            if (this.language === 'it') {
-                this.img = require('../assets/it.png')
-            } else if (this.language === 'en') {
-                this.img = require('../assets/en.png')
-  
-            }
-        }
+        
     }
 
 
