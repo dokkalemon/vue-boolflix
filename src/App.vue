@@ -2,11 +2,10 @@
   <div id="app">
     <Header @searchFilm="userFilm"/>
 
-    <Counter :filmArray="filmList"/>
 
-    <Main :filmArray="filmList" v-if="filmList.length > 0"/>
+    <Main :filmArray="filmList" />
 
-    <Loader v-else/>
+    
 
   </div>
 </template>
@@ -15,16 +14,15 @@
 import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Main from '@/components/Main.vue'
-import Loader from '@/components/Loader.vue'
-import Counter from '@/components/Counter.vue'
+
+
 
 export default {
   name: 'App',
   components: {
     Header,
     Main,
-    Loader,
-    Counter,
+
 
   },
 
@@ -35,6 +33,7 @@ export default {
     data() {
         return {
             filmList: [],
+            seriesList: [],
 
             searchedFilm: '',
 
@@ -58,16 +57,33 @@ export default {
 
             },
 
-            userFilm(dato) {
-              axios.get('https://api.themoviedb.org/3/search/movie?', {
+        userFilm(dato) {
+            //Films
+            axios.get('https://api.themoviedb.org/3/search/movie?', {
                 params: {
                     api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-                    query: `${dato.toLowerCase()}`
+                    query: `${dato.toLowerCase()}`,
+                    language: 'it-IT',
                 }
             })
             .then(result => {
                 this.filmList = result.data.results
             })
+            .catch(err => {console.log(err);})
+
+            //Series
+            axios.get('https://api.themoviedb.org/3/search/tv?', {
+                params: {
+                    api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+                    query: `${dato.toLowerCase()}`, 
+                    language: 'it-IT',
+                }
+            })
+            .then(result => {
+                this.seriesList = result.data.results
+            })
+            .catch(err => {console.log(err);})
+
 
             
             }
