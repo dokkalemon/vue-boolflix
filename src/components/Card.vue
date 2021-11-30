@@ -7,7 +7,6 @@
             <span v-else> {{language}} </span>
       </li>
       <li>{{ vote }}</li>
-
       <li>
           <div class="poster">
               <img :src="image" alt="">
@@ -42,10 +41,7 @@ export default {
     },
 
     methods: {
-        
     }
-
-
 }
 </script>
 
