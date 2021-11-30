@@ -3,7 +3,9 @@
     <Header @searchFilm="userFilm"/>
 
 
-    <Main :filmArray="filmList" />
+    <Main :filmArray="filmList" :seriesArray="seriesList" v-if="this.filmList.length !== 0 || this.seriesList !== 0"/>
+
+    <Loader v-else/>
 
     
 
@@ -14,6 +16,7 @@
 import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Main from '@/components/Main.vue'
+import Loader from '@/components/Loader.vue'
 
 
 
@@ -22,6 +25,7 @@ export default {
   components: {
     Header,
     Main,
+    Loader
 
 
   },

@@ -9,6 +9,15 @@
         :language="film.original_language"
         :vote="film.vote_average"
       />
+
+      <Card 
+        v-for="serie in seriesArray"
+        :key="`${serie.id}`"
+        :title="serie.name"
+        :originalTitle="serie.original_name"
+        :language="serie.original_language"
+        :vote="serie.vote_average"
+      />
         
   </main>
 </template>
@@ -24,6 +33,7 @@ export default {
 
     props: {
         filmArray: Array,
+        seriesArray: Array,
     }
 
 
