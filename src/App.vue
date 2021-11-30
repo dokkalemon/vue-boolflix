@@ -1,14 +1,8 @@
 <template>
   <div id="app">
     <Header @searchFilm="userFilm"/>
-
-
     <Main :filmArray="filmList" :seriesArray="seriesList" v-if="this.filmList.length !== 0 || this.seriesList !== 0"/>
-
     <Loader v-else/>
-
-    
-
   </div>
 </template>
 
@@ -47,7 +41,7 @@ export default {
     methods: {
 
         userFilm(dato) {
-            if (dato === undefined) {
+            if (dato === undefined || dato === '') {
                 dato = 'a'
             }
 
