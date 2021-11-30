@@ -8,6 +8,7 @@
         :originalTitle="film.original_title"
         :language="film.original_language"
         :vote="film.vote_average"
+        :image="`https://image.tmdb.org/t/p/w154/${film.poster_path}`"
       />
 
       <Card 
@@ -17,6 +18,7 @@
         :originalTitle="serie.original_name"
         :language="serie.original_language"
         :vote="serie.vote_average"
+        :image="`https://image.tmdb.org/t/p/w154/${serie.poster_path}`"
       />
         
   </main>

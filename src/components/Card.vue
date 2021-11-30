@@ -7,6 +7,12 @@
             <span v-else> {{language}} </span>
       </li>
       <li>{{ vote }}</li>
+
+      <li>
+          <div class="poster">
+              <img :src="image" alt="">
+          </div>
+      </li>
   </ul>
 </template>
 
@@ -19,7 +25,8 @@ export default {
         title: String,
         originalTitle: String,
         language: String,
-        vote: Number
+        vote: Number,
+        image: String
     },
 
     computed: {
@@ -49,6 +56,12 @@ ul {
         img {
             height: 15px;
         }
+        .poster {
+            img {
+            height: auto
+        }
+        }
+        
     }
 }
 
