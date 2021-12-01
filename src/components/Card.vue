@@ -6,7 +6,7 @@
             <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
             <span v-else> {{language}} </span>
       </li>
-      <li>{{ vote }}</li>
+      <li>{{ Math.round(vote / 2) }}</li>
       <li>
           <div class="poster">
               <img :src="image" alt="">
