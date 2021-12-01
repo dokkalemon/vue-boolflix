@@ -28,7 +28,7 @@
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
         :overwiew="serie.overview"
-        :getId="prova"
+        @getId="prova"
       class="card"/>
       </div>
   </main>
