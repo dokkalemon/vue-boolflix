@@ -15,6 +15,7 @@
         :vote="film.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
         :overwiew="film.overview"
+        @getId="prova"
       class="card"/>
 
       <Card 
@@ -27,6 +28,7 @@
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
         :overwiew="serie.overview"
+        :getId="prova"
       class="card"/>
       </div>
   </main>
@@ -48,6 +50,12 @@ export default {
     props: {
         filmArray: Array,
         seriesArray: Array,
+    },
+
+    methods: {
+      prova(dato) {
+        console.log(dato);
+      }
     }
 }
 </script>
