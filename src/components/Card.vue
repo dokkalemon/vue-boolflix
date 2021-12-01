@@ -73,6 +73,7 @@ export default {
     display: flex;
     flex-direction: column;
     position: relative;
+    left: 0px;
     .card {
         height: 200px;
         width: 100%;
@@ -162,7 +163,6 @@ export default {
                 }
             }
         }
-
     &:hover {
         height: auto;
         position: absolute;
@@ -177,6 +177,7 @@ export default {
     }
     }
 }
+
 
 
 
