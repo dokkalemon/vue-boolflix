@@ -3,6 +3,7 @@
       <Card 
         v-for="film in filmArray"
         :key="`${film.id}`"
+        :id="film.id"
         :title="film.title"
         :originalTitle="film.original_title"
         :language="film.original_language"
@@ -13,6 +14,7 @@
       <Card 
         v-for="serie in seriesArray"
         :key="`${serie.id}`"
+        :id="serie.id"
         :title="serie.name"
         :originalTitle="serie.original_name"
         :language="serie.original_language"

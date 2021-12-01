@@ -1,8 +1,11 @@
 <template>
-    <form action="">
-        <input type="text" placeholder="Inserisci il titolo di un film" v-model.trim="userSearch">
-        <button type="submit" @click.prevent="$emit('searchFilm', userSearch)">Search</button>
-    </form>
+    <header>
+
+        <input type="text" placeholder="Inserisci il titolo di un film" v-model.trim="userSearch" @keyup.enter="$emit('searchFilm', userSearch)">
+        <button @click.prevent="$emit('searchFilm', userSearch)">Search</button>
+
+    </header>
+
 </template>
 
 <script>
@@ -18,5 +21,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+
+
+
 
 </style>

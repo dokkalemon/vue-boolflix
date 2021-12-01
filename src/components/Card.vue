@@ -6,7 +6,9 @@
             <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
             <span v-else> {{language}} </span>
       </li>
-      <li>{{ Math.round(vote / 2) }}</li>
+
+        <li><i class="fas fa-star" v-for="(item, index) in Math.round(vote / 2)" :key="`id${index}`"></i></li>
+
       <li>
           <div class="poster">
               <img :src="image" alt="">
@@ -25,7 +27,8 @@ export default {
         originalTitle: String,
         language: String,
         vote: Number,
-        image: String
+        image: String,
+        id: Number
     },
 
     computed: {
