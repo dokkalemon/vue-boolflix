@@ -1,0 +1,26 @@
+/* GLOBAL */
+//import vars
+@import '@/styles/vars.scss';
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* utilities */
+body {
+    background-color: $background;
+    font-family: $font;
+    color: $text
+}
+
+.px-40 {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.debug {
+    border: 1px solid red;
+}
