@@ -3,7 +3,7 @@
 
       <Jumbo/>
 
-      <div class="cards">
+      <div class="cards px-40">
       <Card 
         v-for="film in filmArray"
         :key="`${film.id}`"
@@ -12,7 +12,7 @@
         :originalTitle="film.original_title"
         :language="film.original_language"
         :vote="film.vote_average"
-        :image="`https://image.tmdb.org/t/p/w154/${film.poster_path}`"
+        :image="`https://image.tmdb.org/t/p/original${film.poster_path}`"
       />
 
       <Card 
@@ -23,11 +23,14 @@
         :originalTitle="serie.original_name"
         :language="serie.original_language"
         :vote="serie.vote_average"
-        :image="`https://image.tmdb.org/t/p/w154/${serie.poster_path}`"
+        :image="`https://image.tmdb.org/t/p/original${serie.poster_path}`"
       />
       </div>
   </main>
+  <!-- https://image.tmdb.org/t/p/original/8s4h9friP6Ci3adRGahHARVd76E.jpg -->
 </template>
+
+
 
 <script>
 import Jumbo from '@/components/Jumbo.vue'
@@ -49,8 +52,11 @@ export default {
 
 <style scoped lang="scss">
 main {
+  
     .cards {
       display: flex;
+      flex-wrap: wrap;
+      padding-top: 20px;
     }
 }
 
