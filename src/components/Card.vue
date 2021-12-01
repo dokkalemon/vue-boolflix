@@ -1,42 +1,52 @@
 <template>
         <section class="card-container">
             <div class="card ">
+
+                <!-- img -->
                 <div class="poster">
                     <img :src="image" alt="">
                 </div>
 
+            <!-- Card info -->
             <div class="info">
                 <div class="title">
                     <h4>{{ title}}</h4>
                 </div>
+
+                <!-- overview -->
                 <div class="overview">
                     <p>{{ overwiew }}</p>
                 </div>
+
+                <!-- vote and flag -->
                 <div class="vote-flag">
                     <div class="vote">
+                        <!-- v-for for stars -->
                        <i class="fas fa-star" v-for="(item, index) in Math.round(vote / 2)" :key="`id${index}`"></i>
                     </div>
+
+                        <!-- v-if for flag or only abbreviation  -->
                         <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
                         <span v-else> {{language}} </span>
                 </div>
+
+                <!-- button control -->
                 <div class="user-control">
                     <i class="fas fa-play"></i>
                     <i class="fas fa-plus"></i>
+                    <i class="fas fa-info"></i>
                 </div>
-
-
             </div>
-
-
         </div>
         </section>
+
 </template>
 
 <script>
 
 export default {
     name: 'Card',
-
+    
     props: {
         title: String,
         originalTitle: String,
@@ -55,6 +65,7 @@ export default {
 
     data() {
         return {
+            //array languages
             availableFlag: ['it', 'en'],
         }
     },

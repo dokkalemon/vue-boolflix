@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <Header @searchFilm="userFilm"/>
+
+    <!-- v-if for hidden loader -->
     <Main :filmArray="filmList" :seriesArray="seriesList" v-if="this.filmList.length !== 0 || this.seriesList !== 0"/>
     <Loader v-else/>
   </div>

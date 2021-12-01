@@ -5,6 +5,8 @@
         </div>
 
         <div class="search-conteiner">
+
+            <!-- on focusout class active will be removed  -->
             <div class="search" :class="{active: activeSearch}" @focusout="activeSearch = false">
                 <label for="search" @click="activeSearch = true"><i class="fas fa-search"></i></label>
                 <input id="search" type="text" placeholder="Inserisci un titolo" v-model.trim="userSearch" @keyup.enter="$emit('searchFilm', userSearch)">
@@ -22,7 +24,7 @@ export default {
     data() {
         return {
             userSearch: '',
-
+            //for class active on header
             activeSearch: false,
         }
     }

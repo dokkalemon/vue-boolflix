@@ -3,6 +3,7 @@
 
       <Jumbo/>
 
+      <!-- Card conteiner -->
       <div class="cards px-40">
       <Card 
         v-for="film in filmArray"
@@ -12,7 +13,7 @@
         :originalTitle="film.original_title"
         :language="film.original_language"
         :vote="film.vote_average"
-        :image="`https://image.tmdb.org/t/p/original${film.poster_path}`"
+        :image="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
         :overwiew="film.overview"
       class="card"/>
 
@@ -24,12 +25,11 @@
         :originalTitle="serie.original_name"
         :language="serie.original_language"
         :vote="serie.vote_average"
-        :image="`https://image.tmdb.org/t/p/original${serie.poster_path}`"
+        :image="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
         :overwiew="serie.overview"
       class="card"/>
       </div>
   </main>
-  <!-- https://image.tmdb.org/t/p/original/8s4h9friP6Ci3adRGahHARVd76E.jpg -->
 </template>
 
 
@@ -53,12 +53,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/vars.scss';
 main {
+  h2 {
+    color: $text;
+    padding: 20px 40px 0 40px;
+    font-weight: 300;
+  }
 
     .cards {
       display: flex;
       flex-wrap: wrap;
-      padding-top: 20px;
+      padding-top: px;
       margin-bottom: 150px;
     }
 
