@@ -13,6 +13,7 @@
         :language="film.original_language"
         :vote="film.vote_average"
         :image="`https://image.tmdb.org/t/p/original${film.poster_path}`"
+        :overwiew="film.overview"
       />
 
       <Card 
@@ -24,6 +25,7 @@
         :language="serie.original_language"
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/original${serie.poster_path}`"
+        :overwiew="serie.overview"
       />
       </div>
   </main>
@@ -52,11 +54,12 @@ export default {
 
 <style scoped lang="scss">
 main {
-  
+
     .cards {
       display: flex;
       flex-wrap: wrap;
       padding-top: 20px;
+      margin-bottom: 150px;
     }
 }
 

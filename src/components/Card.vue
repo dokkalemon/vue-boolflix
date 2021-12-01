@@ -9,6 +9,9 @@
                 <div class="title">
                     <h4>{{ title}}</h4>
                 </div>
+                <div class="overview">
+                    <p>{{ overwiew }}</p>
+                </div>
                 <div class="vote-flag">
                     <div class="vote">
                        <i class="fas fa-star" v-for="(item, index) in Math.round(vote / 2)" :key="`id${index}`"></i>
@@ -16,7 +19,6 @@
                         <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
                         <span v-else> {{language}} </span>
                 </div>
-
                 <div class="user-control">
                     <i class="fas fa-play"></i>
                     <i class="fas fa-plus"></i>
@@ -41,7 +43,8 @@ export default {
         language: String,
         vote: Number,
         image: String,
-        id: Number
+        id: Number,
+        overwiew: String,
     },
 
     computed: {
@@ -65,12 +68,14 @@ export default {
 @import '@/styles/vars.scss';
 .card-container {
     margin-top: 30px;
-    width: calc(100% /6);
+    width: calc(100% /5);
     padding: 5px;
     display: flex;
     flex-direction: column;
+    position: relative;
     .card {
-        height: 150px;
+        height: 200px;
+        width: 100%;
         position: relative;
         border-radius: 10px;
         overflow: hidden;
@@ -91,24 +96,30 @@ export default {
 
         .info {
             padding: 5px;
+            min-height: 200px;
             width: 100%;
-            background-color: $background;
+            background-color: #001632d8;
             color: white;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            justify-content: center;
             opacity: 1;
-            position: absolute;
+            position: relative;
             bottom: 0;
             z-index: 22;
             opacity: 0;
             transition: all 0.4s ease;
             .title {
-                
                 display: flex;
                 justify-content: flex-start;
-                align-self: center;
+                
                 h4 {font-size: 11px;};
+            }
+            .overview {
+                p {
+                    font-size: 7px;
+                    margin-bottom: 10px;
+                }
             }
             .vote-flag {
                 width: 100%;
@@ -123,7 +134,6 @@ export default {
                         color: $secondary-button-border;
                     }
                 }
-                
                     img {
                         height: 10px;
                     }
@@ -154,11 +164,15 @@ export default {
         }
 
     &:hover {
+        height: auto;
+        position: absolute;
+        min-height: 200px;
         transform: scale(1.8);
         z-index: 30;
         box-shadow: 5px 0px 15px rgb(0, 0, 0);
         .info {
             opacity: 1;
+            height: 100%;;
         }
     }
     }
