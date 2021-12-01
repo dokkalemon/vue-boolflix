@@ -1,8 +1,15 @@
 <template>
-    <header>
+    <header class="px-40 ">
+        <div class="logo">
+            <img src="../assets/boolflix-logo.svg" alt="">
+        </div>
 
-        <input type="text" placeholder="Inserisci il titolo di un film" v-model.trim="userSearch" @keyup.enter="$emit('searchFilm', userSearch)">
-        <button @click.prevent="$emit('searchFilm', userSearch)">Search</button>
+        <div class="search-conteiner">
+            <div class="search" :class="{active: activeSearch}" @focusout="activeSearch = false">
+                <label for="search" @click="activeSearch = true"><i class="fas fa-search"></i></label>
+                <input id="search" type="text" placeholder="Inserisci un titolo" v-model.trim="userSearch" @keyup.enter="$emit('searchFilm', userSearch)">
+            </div>
+        </div>
 
     </header>
 
@@ -15,12 +22,81 @@ export default {
     data() {
         return {
             userSearch: '',
+
+            activeSearch: false,
         }
     }
 }
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/vars.scss';
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $header-back;
+    .logo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        img {
+            height: 30px;
+
+        }
+    }
+
+    .search-conteiner {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .search {
+        height: 40px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow:hidden;
+        margin-right: 10px;
+        transition: all 0.4s ease;
+        label {
+            cursor: pointer;
+        }
+        i {
+            margin: 0px 10px;
+            font-size: 18px;
+        }
+
+        input {
+            height: 100%;
+            width: 0;
+            background-color: transparent;
+            border: none;
+            color: $text;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.4s ease;
+        }
+
+    }
+
+    .active {
+        border: 1px solid #ffc107;
+        input {
+            width: 250px;
+        }
+    }
+}
+
+
 
 
 
