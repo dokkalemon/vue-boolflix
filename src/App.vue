@@ -54,7 +54,7 @@ export default {
                 }
             })
             .then(result => {
-                this.filmList = result.data.results
+                this.filmList = result.data.results;
             })
             .catch(err => {console.log(err);})
 
@@ -67,11 +67,15 @@ export default {
                 }
             })
             .then(result => {
-                this.seriesList = result.data.results
+                this.seriesList = result.data.results;
             })
             .catch(err => {console.log(err);});
-            
+        
             }
+
+
+
+
     }
 
 

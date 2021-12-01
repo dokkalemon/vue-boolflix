@@ -40,12 +40,14 @@ header {
     align-items: center;
     background-color: $header-back;
     position: fixed;
+    z-index: 999;
     .logo {
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        flex-grow: 1;
         img {
             height: 30px;
 
@@ -54,10 +56,11 @@ header {
 
     .search-conteiner {
         height: 100%;
-        width: 100%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        flex-shrink: 1;
+
     }
 
     .search {
@@ -75,6 +78,7 @@ header {
         i {
             margin: 0px 10px;
             font-size: 18px;
+            transition: all 0.4s ease
         }
 
         input {
@@ -82,7 +86,7 @@ header {
             width: 0;
             background-color: transparent;
             border: none;
-            color: $text;
+            color: black;
             font-size: 14px;
             outline: none;
             transition: all 0.4s ease;
@@ -91,9 +95,12 @@ header {
     }
 
     .active {
-        border: 1px solid #ffc107;
+        border: 1px solid #006cfa;
         input {
             width: 250px;
+        }
+        i {
+            color: $title
         }
     }
 }

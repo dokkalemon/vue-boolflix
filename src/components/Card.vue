@@ -1,20 +1,23 @@
 <template>
-  <ul>
-      <li>{{ title }}</li>
-      <li v-show="title !== originalTitle">{{ originalTitle }}</li>
-      <li>
-            <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
-            <span v-else> {{language}} </span>
-      </li>
+        <section class="card">
 
-        <li><i class="fas fa-star" v-for="(item, index) in Math.round(vote / 2)" :key="`id${index}`"></i></li>
+            <ul>
+                <li>{{ title }}</li>
+                <li v-show="title !== originalTitle">{{ originalTitle }}</li>
+                <li>
+                        <img v-if="isFlag" :src="require(`../assets/${language}.png`)" alt="">
+                        <span v-else> {{language}} </span>
+                </li>
 
-      <li>
-          <div class="poster">
-              <img :src="image" alt="">
-          </div>
-      </li>
-  </ul>
+                    <li><i class="fas fa-star" v-for="(item, index) in Math.round(vote / 2)" :key="`id${index}`"></i></li>
+
+                <li>
+                    <div class="poster">
+                        <img :src="image" alt="">
+                    </div>
+                </li>
+        </ul>
+        </section>
 </template>
 
 <script>

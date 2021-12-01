@@ -1,5 +1,9 @@
 <template>
   <main>
+
+      <Jumbo/>
+
+      <div class="cards">
       <Card 
         v-for="film in filmArray"
         :key="`${film.id}`"
@@ -21,17 +25,19 @@
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/w154/${serie.poster_path}`"
       />
-        
+      </div>
   </main>
 </template>
 
 <script>
+import Jumbo from '@/components/Jumbo.vue'
 import Card from '@/components/Card.vue'
 
 export default {
     name: 'Main',
     components: {
-        Card
+        Card,
+        Jumbo
     },
 
     props: {
@@ -43,7 +49,9 @@ export default {
 
 <style scoped lang="scss">
 main {
-    width: 100%;
+    .cards {
+      display: flex;
+    }
 }
 
 </style>
