@@ -25,7 +25,7 @@ export default {
   },
 
      created() {
-        this.userFilm()
+        this.userFilm();
     },
 
     data() {
@@ -69,9 +69,7 @@ export default {
             .then(result => {
                 this.seriesList = result.data.results
             })
-            .catch(err => {console.log(err);})
-
-
+            .catch(err => {console.log(err);});
             
             }
     }
