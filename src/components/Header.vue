@@ -34,10 +34,12 @@ export default {
 
 header {
     height: 80px;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     background-color: $header-back;
+    position: fixed;
     .logo {
         width: 100%;
         height: 100%;
