@@ -5,7 +5,7 @@
         </div>
 
         <div class="search-conteiner">
-
+        
             <!-- on focusout class active will be removed  -->
             <div class="search" :class="{active: activeSearch}" @focusout="activeSearch = false">
                 <label for="search" @click="activeSearch = true"><i class="fas fa-search"></i></label>

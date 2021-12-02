@@ -2,41 +2,62 @@
       <div class="info-container" :class="{active: activeInfo}">
           <div class="info-content">
               <div class="info-cover">
+
+                  <!-- Poster -->
                   <img :src="`https://image.tmdb.org/t/p/w1280/${infoFilm.backdrop_path}`" alt="">
                   <div class="info-cover-philter"></div>
               </div>
               <div class="info-text">
+
+                  <!-- Title -->
                   <div class="title">
+                      <!-- V-if for difference of key in API objects (movie, tv) -->
                       <h2 v-if="infoFilm.title != null">{{ infoFilm.title }}</h2>
                       <h2 v-else>{{ infoFilm.name }}</h2>
                   </div>
+
+                  <!-- Button -->
                   <div class="buttons">
                       <button><i class="fas fa-play"></i> RIPRODUCI</button>
                       <i class="fas fa-plus"></i>
                       <i class="far fa-thumbs-up"></i>
                       <i class="fas fa-thumbs-down"></i>
                   </div>
+
+                  <!-- Info Film -->
                   <div class="info-film ">
                       <div class="info-film-item years ">
+
+                          <!-- V-if for difference of key in API objects (movie, tv) -->
                           <span v-if="infoFilm.release_date != null">{{ infoFilm.release_date }}</span><span v-else>{{ infoFilm.first_air_date }}</span> &nbsp;&nbsp;&nbsp; <span v-if="infoFilm.runtime != null">{{ infoFilm.runtime }} min.</span><span v-else>{{ infoFilm.number_of_episodes }} Episodi, {{infoFilm.number_of_seasons}} Stagioni</span>
                       </div>
                       <div class="info-film-item genre  ">
+
+                          <!-- Slice in v-for for 5 Actor -->
                           <p>Cast: <span v-for="(item, index) in nameActor.slice(0, 5)" :key="`actor${index}`"> {{item.name}}, </span></p>
                           <p>Genere: <span v-for="(item, index) in infoFilm.genres" :key="`genre${index}`">{{item.name}}, </span></p>
                       </div>
                   </div>
+
+                  <!-- Overview -->
                   <div class="overview">
                       <p>{{ infoFilm.overview }}</p>
                   </div>
+
+                  <!-- Related Film -->
                   <div class="related ">
                       <h3>Film Correlati:</h3>
                       <div class="related-film ">
                           <div class="related-film-scroll">
+
+                              <!-- Slice in v-for for 6 Related films -->
                               <div class="card-container" v-for="(item, index) in relatedFilm.slice(0, 6)" :key="`related${index}`">
                                   <div class="card" >
                                       <div class="card-cover">
                                             <img :src="`https://image.tmdb.org/t/p/w1280/${item.poster_path}`" alt="">
                                       </div>
+
+                                      <!-- V-if for difference of key in API objects (movie, tv) -->
                                       <h4 v-if="item.title != null">{{item.title}}</h4>
                                       <h4 v-else>{{item.name}}</h4>
                                       
@@ -235,10 +256,7 @@ export default {
                                                 object-fit: cover;
                                             }
                                         }
-                                        
-                                            
-                                            h4 {
-                                               
+                                            h4 {       
                                             text-align: center;
                                             color: $text;
                                             font-weight: 300;

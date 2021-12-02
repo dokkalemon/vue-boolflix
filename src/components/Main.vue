@@ -2,7 +2,6 @@
   <main>
 
       <Jumbo/>
-
       <!-- Card conteiner -->
       <div class="cards px-40">
       <Card 
@@ -48,6 +47,7 @@ import Card from '@/components/Card.vue'
 import Info from '@/components/Info.vue'
 
 
+
 export default {
     name: 'Main',
     components: {
@@ -68,63 +68,65 @@ export default {
         infoFilm: {},
         actorFilm: [],
         relatedFilm: [],
+        genreFilm: []
       }
     },
 
     methods: {
+
+      /* Card:hover show the info */
       hiddenInfo() {
         this.activeInfo = false;
-        this.introFilm = null;
       },
 
-      getInfoFilm(dato) {
-        console.log(dato);
 
-        //film
-        this.activeInfo = true;
+        /* API for Films */
+        getInfoFilm(dato) {
+            //getfilm
+            this.activeInfo = true;
 
-        axios.get(`https://api.themoviedb.org/3/movie/${dato}`, {
-          params: {
-            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-            language: 'it-IT'
-          }
-        })
-        .then(result => {
-          this.infoFilm = result.data;
-        })
-        .catch(err => {console.log(err);})
-        
-        
-        //getCast
-        axios.get(`https://api.themoviedb.org/3/movie/${dato}/credits`, {
-          params: {
-            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-            language: 'it-IT'
-          }
-        })
-        .then(result => {
-          this.actorFilm = result.data.cast;
-        })
-        .catch(err => {console.log(err);})
+            axios.get(`https://api.themoviedb.org/3/movie/${dato}`, {
+              params: {
+                api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+                language: 'it-IT'
+              }
+            })
+            .then(result => {
+              this.infoFilm = result.data;
+            })
+            .catch(err => {console.log(err);})
+            
+            
+            //getFilmCast
+            axios.get(`https://api.themoviedb.org/3/movie/${dato}/credits`, {
+              params: {
+                api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+                language: 'it-IT'
+              }
+            })
+            .then(result => {
+              this.actorFilm = result.data.cast;
+            })
+            .catch(err => {console.log(err);})
 
-        //related film
-        axios.get(`https://api.themoviedb.org/3/movie/${dato}/similar`, {
-          params: {
-            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
-            language: 'it-IT'
-          }
-        })
-        .then(result => {
-          this.relatedFilm = result.data.results;
-        })
-        .catch(err => {console.log(err)})
+            //related film
+            axios.get(`https://api.themoviedb.org/3/movie/${dato}/similar`, {
+              params: {
+                api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+                language: 'it-IT'
+              }
+            })
+            .then(result => {
+              this.relatedFilm = result.data.results;
+            })
+            .catch(err => {console.log(err)})
 
 
 
       },
 
       
-
+      /* API for Series */ 
       getInfoSerie(dato) {
         console.log(dato);
 
@@ -165,8 +167,7 @@ export default {
           this.relatedFilm = result.data.results;
         })
         .catch(err => {console.log(err)})
-
-      }
+      },
     }
 }
 </script>

@@ -2,6 +2,7 @@
   <section class="jumbo ">
       <div class="img">
         <img src="https://image.tmdb.org/t/p/original/wEmexPKgF2sgYvvl6MxI5rTn2qM.jpg" alt="">
+        <div class="philter"></div>
     </div>
 
     <div class="description-container px-40">
@@ -58,7 +59,15 @@ export default {
             width: 100%;
             object-fit: cover;
             position: relative;
-            filter: brightness(50%);
+            
+        }
+        .philter {
+            height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 255, 0), $background, );
+            position: absolute;
+            top: 0;
+
         }
     }
     .description-container {
