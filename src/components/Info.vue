@@ -18,7 +18,7 @@
                   </div>
                   <div class="info-film ">
                       <div class="info-film-item years ">
-                          <span>{{ infoFilm.release_date }}</span> &nbsp;&nbsp;&nbsp; <span>{{ infoFilm.runtime }} min.</span>
+                          <span v-if="infoFilm.release_date != null">{{ infoFilm.release_date }}</span><span v-else>{{ infoFilm.first_air_date }}</span> &nbsp;&nbsp;&nbsp; <span v-if="infoFilm.runtime != null">{{ infoFilm.runtime }} min.</span><span v-else>{{ infoFilm.number_of_episodes }} Episodi, {{infoFilm.number_of_seasons}} Stagioni</span>
                       </div>
                       <div class="info-film-item genre  ">
                           <p>Cast: <span v-for="(item, index) in nameActor.slice(0, 5)" :key="`actor${index}`"> {{item.name}}, </span></p>
@@ -32,12 +32,12 @@
                       <h3>Film Correlati:</h3>
                       <div class="related-film ">
                           <div class="related-film-scroll">
-                              <div class="card-container">
-                                  <div class="card">
+                              <div class="card-container" v-for="(item, index) in relatedFilm.slice(0, 6)" :key="`related${index}`">
+                                  <div class="card" >
                                       <div class="card-cover">
-                                            <img src="https://image.tmdb.org/t/p/w1280/8s4h9friP6Ci3adRGahHARVd76E.jpg" alt="">
+                                            <img :src="`https://image.tmdb.org/t/p/w1280/${item.poster_path}`" alt="">
                                       </div>
-                                      <h4>SPACE JAM</h4>
+                                      <h4>{{item.title}}</h4>
                                   </div>
                               </div>
                           </div>
@@ -60,6 +60,7 @@ export default {
         activeInfo: Boolean,
         infoFilm: Object,
         nameActor: Array,
+        relatedFilm: Array,
     }
     
 }
@@ -214,13 +215,14 @@ export default {
                                 height: 100%;
                                 width: 200%;
                                 .card-container {
-                                    display: inline-block;
+                                    display: inline-block;;
                                     height: 100%;
                                     width: calc(100% / 6);
                                     padding: 10px;
                                     .card {
                                         height: 100%;
                                         width: 100%;
+                                        
                                         .card-cover {
                                             border-radius: 10px;
                                             overflow: hidden;
@@ -237,6 +239,7 @@ export default {
                                             color: $text;
                                             font-weight: 300;
                                             margin-top: 5px;
+                                            text-transform: capitalize;
                                         }
                                     }
                                 }

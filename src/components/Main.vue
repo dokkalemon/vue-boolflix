@@ -33,7 +33,7 @@
       </div>
 
     <div class="philter" :class="{active: activeInfo}" @click="hiddenInfo()"></div>
-    <Info :activeInfo="activeInfo" class="info" :infoFilm="infoFilm" :nameActor="actorFilm"/>
+    <Info :activeInfo="activeInfo" class="info" :infoFilm="infoFilm" :nameActor="actorFilm" :relatedFilm="relatedFilm"/>
 
 
   </main>
@@ -66,7 +66,8 @@ export default {
       return {
         activeInfo: false,
         infoFilm: {},
-        actorFilm: {},
+        actorFilm: [],
+        relatedFilm: [],
       }
     },
 
@@ -105,6 +106,21 @@ export default {
           this.actorFilm = result.data.cast;
         })
         .catch(err => {console.log(err);})
+
+        //related film
+        axios.get(`https://api.themoviedb.org/3/movie/${dato}/similar`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.relatedFilm = result.data.results;
+        })
+        .catch(err => {console.log(err)})
+
+
+
       },
 
       
@@ -112,7 +128,7 @@ export default {
       getInfoSerie(dato) {
         console.log(dato);
 
-        //film
+        //serie
         this.activeInfo = true;
 
         axios.get(`https://api.themoviedb.org/3/tv/${dato}`, {
@@ -123,6 +139,18 @@ export default {
         })
         .then(result => {
           this.infoFilm = result.data;
+        })
+        .catch(err => {console.log(err);})
+
+        //getCast
+        axios.get(`https://api.themoviedb.org/3/tv/${dato}/credits`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.actorFilm = result.data.cast;
         })
         .catch(err => {console.log(err);})
       }
