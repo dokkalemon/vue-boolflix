@@ -15,7 +15,7 @@
         :vote="film.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
         :overwiew="film.overview"
-        @getId="prova"
+        @getId="getInfo"
       class="card"/>
 
       <Card 
@@ -28,23 +28,33 @@
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
         :overwiew="serie.overview"
-        @getId="prova"
+        @getId="getInfo"
       class="card"/>
       </div>
+
+    <div class="philter" :class="{active: activeInfo}" @click="(activeInfo = false)"></div>
+    <Info :activeInfo="activeInfo" class="info" />
+
+
   </main>
 </template>
 
 
 
 <script>
+/* import axios from 'axios' */
 import Jumbo from '@/components/Jumbo.vue'
 import Card from '@/components/Card.vue'
+import Info from '@/components/Info.vue'
+
 
 export default {
     name: 'Main',
     components: {
         Card,
-        Jumbo
+        Jumbo,
+        Info,
+
     },
 
     props: {
@@ -52,9 +62,17 @@ export default {
         seriesArray: Array,
     },
 
+    data() {
+      return {
+        activeInfo: false,
+      }
+    },
+
     methods: {
-      prova(dato) {
+      getInfo(dato) {
         console.log(dato);
+        this.activeInfo = true;
+
       }
     }
 }
@@ -88,6 +106,23 @@ main {
       &:nth-child(5n+5):hover {
         left: -110px;
       }
+    }
+
+    .info {
+      z-index: 888;
+    }
+    .philter {
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.851);
+      top:0;
+      z-index: 80;
+      display: none;
+    }
+
+    .active {
+      display: block;
     }
 }
 

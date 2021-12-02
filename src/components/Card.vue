@@ -34,7 +34,7 @@
                 <div class="user-control">
                     <i class="fas fa-play"></i>
                     <i class="fas fa-plus"></i>
-                    <i class="fas fa-info" @click="$emit('getId', id)"></i>
+                    <i class="fas fa-info" @click="$emit('getId', id)" ></i>
                 </div>
             </div>
         </div>
