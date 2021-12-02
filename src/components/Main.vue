@@ -15,7 +15,7 @@
         :vote="film.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
         :overwiew="film.overview"
-        @getId="getInfo"
+        @getId="getInfoFilm"
       class="card"/>
 
       <Card 
@@ -28,12 +28,12 @@
         :vote="serie.vote_average"
         :image="`https://image.tmdb.org/t/p/w342${serie.poster_path}`"
         :overwiew="serie.overview"
-        @getId="getInfo"
+        @getId="getInfoSerie"
       class="card"/>
       </div>
 
     <div class="philter" :class="{active: activeInfo}" @click="hiddenInfo()"></div>
-    <Info :activeInfo="activeInfo" class="info" :infoFilm="infoFilm"/>
+    <Info :activeInfo="activeInfo" class="info" :infoFilm="infoFilm" :nameActor="actorFilm"/>
 
 
   </main>
@@ -65,7 +65,8 @@ export default {
     data() {
       return {
         activeInfo: false,
-        infoFilm: [],
+        infoFilm: {},
+        actorFilm: {},
       }
     },
 
@@ -75,11 +76,46 @@ export default {
         this.introFilm = null;
       },
 
-      getInfo(dato) {
+      getInfoFilm(dato) {
         console.log(dato);
+
+        //film
         this.activeInfo = true;
 
         axios.get(`https://api.themoviedb.org/3/movie/${dato}`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.infoFilm = result.data;
+        })
+        .catch(err => {console.log(err);})
+        
+        
+        //getCast
+        axios.get(`https://api.themoviedb.org/3/movie/${dato}/credits`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.actorFilm = result.data.cast;
+        })
+        .catch(err => {console.log(err);})
+      },
+
+      
+
+      getInfoSerie(dato) {
+        console.log(dato);
+
+        //film
+        this.activeInfo = true;
+
+        axios.get(`https://api.themoviedb.org/3/tv/${dato}`, {
           params: {
             api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
             language: 'it-IT'

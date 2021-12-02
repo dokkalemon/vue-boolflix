@@ -7,7 +7,8 @@
               </div>
               <div class="info-text">
                   <div class="title">
-                      <h2>{{ infoFilm.title }}</h2>
+                      <h2 v-if="infoFilm.title != null">{{ infoFilm.title }}</h2>
+                      <h2 v-else>{{ infoFilm.name }}</h2>
                   </div>
                   <div class="buttons">
                       <button><i class="fas fa-play"></i> RIPRODUCI</button>
@@ -20,14 +21,12 @@
                           <span>{{ infoFilm.release_date }}</span> &nbsp;&nbsp;&nbsp; <span>{{ infoFilm.runtime }} min.</span>
                       </div>
                       <div class="info-film-item genre  ">
-                          <p><span>Cast:</span> Lebron James, Bugs Bunny, Duffy Duck, Giovanni Bruno</p>
+                          <p>Cast: <span v-for="(item, index) in nameActor.slice(0, 5)" :key="`actor${index}`"> {{item.name}}, </span></p>
                           <p>Genere: <span v-for="(item, index) in infoFilm.genres" :key="`genre${index}`">{{item.name}}, </span></p>
                       </div>
                   </div>
                   <div class="overview">
                       <p>{{ infoFilm.overview }}</p>
-
-
                   </div>
                   <div class="related ">
                       <h3>Film Correlati:</h3>
@@ -60,6 +59,7 @@ export default {
     props: {
         activeInfo: Boolean,
         infoFilm: Object,
+        nameActor: Array,
     }
     
 }
@@ -113,7 +113,9 @@ export default {
                     color: $text;
                     font-size: 50px;
                     text-transform: uppercase;
-                    font-weight: 400
+                    font-weight: 400;
+                    line-height: 50px;
+                    margin-bottom: 20px;
                 }
                 .buttons {
                     display: flex;
