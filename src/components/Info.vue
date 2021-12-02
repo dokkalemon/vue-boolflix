@@ -2,12 +2,12 @@
       <div class="info-container" :class="{active: activeInfo}">
           <div class="info-content">
               <div class="info-cover">
-                  <img src="https://image.tmdb.org/t/p/w1280/8s4h9friP6Ci3adRGahHARVd76E.jpg" alt="">
+                  <img :src="`https://image.tmdb.org/t/p/w1280/${infoFilm.backdrop_path}`" alt="">
                   <div class="info-cover-philter"></div>
               </div>
               <div class="info-text">
                   <div class="title">
-                      <h2>Space Jam</h2>
+                      <h2>{{ infoFilm.title }}</h2>
                   </div>
                   <div class="buttons">
                       <button><i class="fas fa-play"></i> RIPRODUCI</button>
@@ -17,12 +17,17 @@
                   </div>
                   <div class="info-film ">
                       <div class="info-film-item years ">
-                          <span>2005</span> - <span>116 min.</span>
+                          <span>{{ infoFilm.release_date }}</span> &nbsp;&nbsp;&nbsp; <span>{{ infoFilm.runtime }} min.</span>
                       </div>
                       <div class="info-film-item genre  ">
                           <p><span>Cast:</span> Lebron James, Bugs Bunny, Duffy Duck, Giovanni Bruno</p>
-                          <p><span>Genre:</span> Animazione, Famiglia, Commedia, Fantascienza</p>
+                          <p>Genere: <span v-for="(item, index) in infoFilm.genres" :key="`genre${index}`">{{item.name}}, </span></p>
                       </div>
+                  </div>
+                  <div class="overview">
+                      <p>{{ infoFilm.overview }}</p>
+
+
                   </div>
                   <div class="related ">
                       <h3>Film Correlati:</h3>
@@ -54,6 +59,7 @@ export default {
 
     props: {
         activeInfo: Boolean,
+        infoFilm: Object,
     }
     
 }
@@ -180,6 +186,13 @@ export default {
                     }
                     .genre {
                         width: 40%;
+                    }
+                }
+                .overview {
+                    margin-top: 20px;
+                    p {
+                        color: $text;
+                        font-weight: 300;
                     }
                 }
                 .related {

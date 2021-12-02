@@ -32,8 +32,8 @@
       class="card"/>
       </div>
 
-    <div class="philter" :class="{active: activeInfo}" @click="(activeInfo = false)"></div>
-    <Info :activeInfo="activeInfo" class="info" />
+    <div class="philter" :class="{active: activeInfo}" @click="hiddenInfo()"></div>
+    <Info :activeInfo="activeInfo" class="info" :infoFilm="infoFilm"/>
 
 
   </main>
@@ -42,7 +42,7 @@
 
 
 <script>
-/* import axios from 'axios' */
+import axios from 'axios'
 import Jumbo from '@/components/Jumbo.vue'
 import Card from '@/components/Card.vue'
 import Info from '@/components/Info.vue'
@@ -65,14 +65,30 @@ export default {
     data() {
       return {
         activeInfo: false,
+        infoFilm: [],
       }
     },
 
     methods: {
+      hiddenInfo() {
+        this.activeInfo = false;
+        this.introFilm = null;
+      },
+
       getInfo(dato) {
         console.log(dato);
         this.activeInfo = true;
 
+        axios.get(`https://api.themoviedb.org/3/movie/${dato}`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.infoFilm = result.data;
+        })
+        .catch(err => {console.log(err);})
       }
     }
 }
