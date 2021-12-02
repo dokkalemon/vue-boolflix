@@ -37,7 +37,9 @@
                                       <div class="card-cover">
                                             <img :src="`https://image.tmdb.org/t/p/w1280/${item.poster_path}`" alt="">
                                       </div>
-                                      <h4>{{item.title}}</h4>
+                                      <h4 v-if="item.title != null">{{item.title}}</h4>
+                                      <h4 v-else>{{item.name}}</h4>
+                                      
                                   </div>
                               </div>
                           </div>
@@ -206,7 +208,6 @@ export default {
                         font-weight: 400;
                     }
                         .related-film {
-
                             width: 100%;
                             overflow-x: auto;
                             overflow-y: hidden;
@@ -214,17 +215,17 @@ export default {
                             .related-film-scroll {
                                 height: 100%;
                                 width: 200%;
+                                display: flex;;
                                 .card-container {
-                                    display: inline-block;;
                                     height: 100%;
                                     width: calc(100% / 6);
                                     padding: 10px;
+                                    cursor: pointer;
                                     .card {
                                         height: 100%;
                                         width: 100%;
-                                        
                                         .card-cover {
-                                            border-radius: 10px;
+                                           border-radius: 10px;
                                             overflow: hidden;
                                             height: 300px;
                                             width: 100%;
@@ -234,12 +235,17 @@ export default {
                                                 object-fit: cover;
                                             }
                                         }
-                                        h4 {
+                                        
+                                            
+                                            h4 {
+                                               
                                             text-align: center;
                                             color: $text;
                                             font-weight: 300;
                                             margin-top: 5px;
                                             text-transform: capitalize;
+                                            height: auto;
+                                        }
                                         }
                                     }
                                 }
@@ -247,21 +253,9 @@ export default {
                         }
 
                 }
-
-                .more-info {
-                    height: 400px;
-                    margin-top: 30px;
-                    h3 {
-                        color: $text;
-                        font-weight: 400;
-
-                    }
-                }
-
-
             }
         }
-    }
+    
 .active {
     top: 50%;
 }

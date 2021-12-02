@@ -153,6 +153,19 @@ export default {
           this.actorFilm = result.data.cast;
         })
         .catch(err => {console.log(err);})
+
+        //related serie
+        axios.get(`https://api.themoviedb.org/3/tv/${dato}/similar`, {
+          params: {
+            api_key: '519ddeb4aedf4b3d733b4d9c3a5aabe3',
+            language: 'it-IT'
+          }
+        })
+        .then(result => {
+          this.relatedFilm = result.data.results;
+        })
+        .catch(err => {console.log(err)})
+
       }
     }
 }
